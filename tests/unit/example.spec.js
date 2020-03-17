@@ -1,3 +1,5 @@
+const expect = require('chai').expect
+
 import {render, fireEvent} from '@testing-library/vue'
 
 import App from '../../src/App.vue'
@@ -13,11 +15,11 @@ it('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
   const {queryByTestId} = render(App, {routes})
 
-  expect(queryByTestId('location-display').textContent).toEqual('/')
+  expect(queryByTestId('location-display').textContent).to.equal('/')
 
   await fireEvent.click(queryByTestId('about-link'))
 
-  expect(queryByTestId('location-display').textContent).toEqual('/about')
+  expect(queryByTestId('location-display').textContent).to.equal('/about')
 })
 
 it('setting initial route', () => {
@@ -28,5 +30,5 @@ it('setting initial route', () => {
     router.push('/about')
   })
 
-  expect(queryByTestId('location-display').textContent).toEqual('/about')
+  expect(queryByTestId('location-display').textContent).to.equal('/about')
 })
